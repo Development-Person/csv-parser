@@ -15,6 +15,8 @@ module.exports = {
     });
   },
 
+  remove: function (req, res) {},
+
   add: function (req, res) {
     res.view('add');
   },
