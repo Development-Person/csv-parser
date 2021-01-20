@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Treatment Row List</title>
+  </head>
+  <h1 class="display-4">Treatment Rows</h1>
+
+  <body>
+   <div class="mb-4">
+    <% if(treatmentRow.length > 0) { %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Rainfall Station</th>
+            <th scope="col">Treatment</th>
+            <th scope="col">Impervious Area</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<treatmentRow.length;i++) { %>
+            <tr scope="row">
+              <td><%= treatmentRow[i].id%></td>
+              <td><%= treatmentRow[i].treatmentRowProject%></td>
+              <td><%= treatmentRow[i].rainfallStation%></td>
+              <td><%= treatmentRow[i].treatment%></td>
+              <td><%= treatmentRow[i].imperviousArea%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No data found.</div>
+      <% } %>
+    </div>
+    <div>
+      <h2 class="display-4">Add Treatment Row</h2>
+      <form method="post" action="/treatmentrow/create" class="mb-4">
+      <div class="form-group">
+        <label for="projectname">Project Name</label>
+        <input type="text" name="projectname" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="rainfallstation">Rainfall Station</label>
+        <input type="text" name="rainfallstation" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="treatmenttype">Treatment Type</label>
+        <input type="text" name="treatmenttype" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="treatmentsize">Treatment Size</label>
+        <input type="number" name="treatmentsize" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="imperviousareaname">Impervious Area Name</label>
+        <input type="text" name="imperviousareaname" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="imperviousareatype">Impervious Area Type</label>
+        <input type="text" name="imperviousareatype" class="form-control">
+      </div>
+      <input type="submit" value="submit" class="btn btn-primary">
+      </form>
+    </div>
+    <div>  
+    <h1 class="display-4">CSV Submit</h1>
+      <Row>
+        <Col>
+          <label class="text-muted">Upload your file</label>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+        </Col>
+        <Col>
+          <a href="/" class="btn btn-light">Submit</a>
+        </Col>
+      </Row>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Impervious Area List</title>
+  </head>
+  <h1 class="display-4">Impervious Areas</h1>
+
+  <body>
+    <% if(imperviousArea.length > 0) { %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Area Name</th>
+            <th scope="col">Area Type</th>
+            <th scope="col">Treatment Row Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<imperviousArea.length;i++) { %>
+            <tr scope="row">
+              <td><%= imperviousArea[i].id%></td>
+              <td><%= imperviousArea[i].areaName%></td>
+              <td><%= imperviousArea[i].areaType%></td>
+              <td><%= imperviousArea[i].treatmentRow%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No data found.</div>
+      <% } %>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Storm Backend DB Admin</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <%/* If you want to discourage search engines from indexing this site,
+    uncomment the following line: */%> <%/*
+    <meta name="robots" content="noindex" />
+    */%>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var url = window.location;
+        $('ul.navbar-nav a[href="' + url + '"]')
+          .parent()
+          .addClass('active');
+        $('ul.navbar-nav a')
+          .filter(function () {
+            return this.href == url;
+          })
+          .parent()
+          .addClass('active');
+      });
+    </script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/homepage.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+      <a class="navbar-brand" href="/">Storm Backend DB Admin</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/"
+              >Home<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/imperviousArea/index"
+              >Impervious Areas</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/treatmentrow/index">Treatment Rows</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/treatment/index">Treatment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rainfallstation/index"
+              >Rainfall Stations</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container"><%- body %></div>
+
+    <!--SCRIPTS-->
+    <script src="/dependencies/sails.io.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

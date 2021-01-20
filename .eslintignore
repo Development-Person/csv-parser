@@ -1,0 +1,5 @@
+assets/dependencies/**/*.js
+views/**/*.ejs
+*.env
+
+

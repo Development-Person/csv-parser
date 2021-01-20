@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Rainfall Stations</title>
+  </head>
+  <h1 class="display-4">Rainfall Stations</h1>
+
+  <body>
+    <% if(rainfallStation.length > 0) { %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Location</th>
+            <th scope="col">Treatment Row</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<rainfallStation.length;i++) { %>
+            <tr scope="row">
+              <td><%= rainfallStation[i].id%></td>
+              <td><%= rainfallStation[i].location%></td>
+              <td><%= rainfallStation[i].treatmentRow%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No data found.</div>
+      <% } %>
+  </body>
+</html>

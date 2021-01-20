@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Treatment List</title>
+  </head>
+  <h1 class="display-4">Treatments</h1>
+
+  <body>
+    <% if(treatment.length > 0) { %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Treatment Type</th>
+            <th scope="col">Treatment Size</th>
+            <th scope="col">Treatment Row</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<treatment.length;i++) { %>
+            <tr scope="row">
+              <td><%= treatment[i].id%></td>
+              <td><%= treatment[i].treatmentType%></td>
+              <td><%= treatment[i].treatmentSize%></td>
+              <td><%= treatment[i].treatmentRow%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No data found.</div>
+      <% } %>
+  </body>
+</html>
