@@ -36,7 +36,6 @@ var cssFilesToInject = [
   // All of the rest of your custom `.css` files will be injected here,
   // in no particular order.  To customize the ordering, add additional
   // items here, _above_ this one.
-  'homepage.css',
   'styles/**/*.css',
 ];
 

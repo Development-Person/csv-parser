@@ -4,37 +4,43 @@
   <head>
     <title>Treatment Row List</title>
   </head>
+<!-- display treatment rows start -->
   <h1 class="display-4">Treatment Rows</h1>
-
   <body>
-   <div class="mb-4">
-    <% if(treatmentRow.length > 0) { %>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Project Name</th>
-            <th scope="col">Rainfall Station</th>
-            <th scope="col">Treatment</th>
-            <th scope="col">Impervious Area</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for(var i=0; i<treatmentRow.length;i++) { %>
-            <tr scope="row">
-              <td><%= treatmentRow[i].id%></td>
-              <td><%= treatmentRow[i].treatmentRowProject%></td>
-              <td><%= treatmentRow[i].rainfallStation%></td>
-              <td><%= treatmentRow[i].treatment%></td>
-              <td><%= treatmentRow[i].imperviousArea%></td>
+    <div class="mb-4">
+      <% if(treatmentRow.length > 0) { %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Project Name</th>
+              <th scope="col">Rainfall Station</th>
+              <th scope="col">Treatment Type</th>
+              <th scope="col">Treatment Size</th>
+              <th scope="col">Impervious Area Type</th>
+              <th scope="col">Impervious Area Name</th>
             </tr>
-          <% } %>
-        </tbody>
-      </table>
-      <% } else { %>
-        <div>No data found.</div>
-      <% } %>
-    </div>
+          </thead>
+          <tbody>
+            <% for(var i=0; i<treatmentRow.length;i++) { %>
+              <tr scope="row">
+                <td><%= treatmentRow[i].id%></td>
+                <td><%= treatmentRow[i].treatmentRowProject%></td>
+                <td><%= treatmentRow[i].rainfallStation.location%></td>
+                <td><%= treatmentRow[i].treatment.treatmentType%></td>
+                <td><%= treatmentRow[i].treatment.treatmentSize%></td>
+                <td><%= treatmentRow[i].imperviousArea.areaName%></td>
+                <td><%= treatmentRow[i].imperviousArea.areaType%></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+          <% } else { %>
+            <div>No data found.</div>
+            <% } %>
+          </div>
+<!-- display treatment rows end -->
+<!-- enter new data form start -->
     <div>
       <h2 class="display-4">Add Treatment Row</h2>
       <form method="post" action="/treatmentrow/create" class="mb-4">
@@ -65,19 +71,21 @@
       <input type="submit" value="submit" class="btn btn-primary">
       </form>
     </div>
-    <div>  
-    <h1 class="display-4">CSV Submit</h1>
-      <Row>
-        <Col>
-          <label class="text-muted">Upload your file</label>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Choose file</label>
-        </Col>
-        <Col>
-          <a href="/" class="btn btn-light">Submit</a>
-        </Col>
-      </Row>
-    </div>
+<!-- enter new data form end -->
+<!-- Upload file form start -->
+	<div class="mb-4">
+				<h2 class="display-4">Upload CSV</h2>
+        <form action="/treatmentrow/upload" method="post" enctype="multipart/form-data">
+          <label>(optional) Include additional metadata</label>
+          <input type="text" name="foo" placeholder="some other metadata"/>
+          <br/>
+          <label>Please upload your file:</label>
+          <input type="file" name="uploadfile"/>
+          <br/>
+          <input class="btn btn-primary" type="submit"/>
+      </form>
+		</div >
+<!-- Upload file form end -->
   </body>
 </html>
+<!-- enctype="multipart/form-data" -->

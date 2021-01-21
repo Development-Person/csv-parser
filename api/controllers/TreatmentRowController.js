@@ -5,19 +5,26 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+// const fastcsv = require('fast-csv');
+
 module.exports = {
-  index: function (req, res) {
-    treatmentRow.find().exec((err, treatmentRow) => {
-      if (err) {
-        res.send(500, { error: 'Database error' });
-      }
-      res.view('treatmentRow/index', { treatmentRow: treatmentRow });
-    });
+  index: async function (req, res) {
+    try {
+      var data = await treatmentRow
+        .find()
+        .populate('treatment')
+        .populate('imperviousArea')
+        .populate('rainfallStation');
+
+      res.view('treatmentRow/index', { treatmentRow: data });
+    } catch (err) {
+      return res.serverError(err);
+    }
   },
 
-  add: function (req, res) {
-    res.view('add');
-  },
+  // add: function (req, res) {
+  //   res.view('add');
+  // },
 
   create: async function (req, res) {
     //setting variables for each part of the form
@@ -83,5 +90,32 @@ module.exports = {
     } catch (err) {
       return res.serverError(err);
     }
+  },
+
+  upload: function (req, res) {
+    // e.g.
+    // 0 => infinite
+    // 240000 => 4 minutes (240,000 miliseconds)
+    // etc.
+    //
+    // Node defaults to 2 minutes.
+    res.setTimeout(0);
+
+    req.file('uploadfile').upload(
+      {
+        // You can apply a file upload limit (in bytes)
+        maxBytes: 1000000,
+      },
+      function whenDone(err, uploadedFiles) {
+        if (err) {
+          return res.serverError(err);
+        } else {
+          return res.json({
+            files: uploadedFiles,
+            textParams: req.allParams(),
+          });
+        }
+      }
+    );
   },
 };
