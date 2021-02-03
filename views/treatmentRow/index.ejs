@@ -5,7 +5,7 @@
     <title>Treatment Row List</title>
   </head>
 <!-- display treatment rows start -->
-  <h1 class="display-4">Treatment Rows</h1>
+  <h1 class="display-4 mb-4">Treatment Rows</h1>
   <body>
     <div class="mb-4">
       <% if(treatmentRow.length > 0) { %>
@@ -42,7 +42,7 @@
 <!-- display treatment rows end -->
 <!-- enter new data form start -->
     <div>
-      <h2 class="display-4">Add Treatment Row</h2>
+      <h2 class="display-4 mb-4">Add Treatment Row</h2>
       <form method="post" action="/treatmentrow/create" class="mb-4">
       <div class="form-group">
         <label for="projectname">Project Name</label>
@@ -74,8 +74,8 @@
 <!-- enter new data form end -->
 <!-- Upload file form start -->
 	<div class="mb-4">
-				<h2 class="display-4">Upload CSV</h2>
-        <form action="/treatmentrow/upload" method="post" enctype="multipart/form-data">
+				<h2 class="display-4 mb-4">Upload CSV Data to Database</h2>
+        <form action="/treatmentrow/parse" method="post" enctype="multipart/form-data">
           <label>(optional) Include additional metadata</label>
           <input type="text" name="foo" placeholder="some other metadata"/>
           <br/>
